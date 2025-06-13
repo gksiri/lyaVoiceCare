@@ -1,0 +1,372 @@
+{
+    "name": "ADD Supabase",
+    "flow": [
+        {
+            "id": 1,
+            "module": "tally:watchNewResponse",
+            "version": 1,
+            "parameters": {
+                "__IMTHOOK__": 801177
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTHOOK__": {
+                            "data": {
+                                "editable": "false"
+                            },
+                            "label": "My New Response webhook"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTHOOK__",
+                        "type": "hook:tally",
+                        "label": "Webhook",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "eventId",
+                        "type": "text",
+                        "label": "Event ID"
+                    },
+                    {
+                        "name": "responseId",
+                        "type": "text",
+                        "label": "Response ID"
+                    },
+                    {
+                        "name": "submissionId",
+                        "type": "text",
+                        "label": "Submission ID"
+                    },
+                    {
+                        "name": "respondentId",
+                        "type": "text",
+                        "label": "Respondent ID"
+                    },
+                    {
+                        "name": "formId",
+                        "type": "text",
+                        "label": "Form ID"
+                    },
+                    {
+                        "name": "formName",
+                        "type": "text",
+                        "label": "Form Name"
+                    },
+                    {
+                        "name": "createdAt",
+                        "type": "date",
+                        "label": "Created at"
+                    },
+                    {
+                        "name": "fields",
+                        "spec": [
+                            {
+                                "name": "Phone Number",
+                                "type": "text"
+                            },
+                            {
+                                "name": "Full Name\n",
+                                "type": "text"
+                            },
+                            {
+                                "name": "Date\n",
+                                "type": "text"
+                            },
+                            {
+                                "name": "Reminder\n",
+                                "type": "text"
+                            },
+                            {
+                                "name": "Keyword\n",
+                                "type": "text"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Fields"
+                    },
+                    {
+                        "name": "fieldsById",
+                        "spec": [
+                            {
+                                "name": "question_JdYGBd",
+                                "type": "text",
+                                "label": "Phone Number"
+                            },
+                            {
+                                "name": "question_y2bY8g",
+                                "type": "text",
+                                "label": "Full Name\n"
+                            },
+                            {
+                                "name": "question_XJ706g",
+                                "type": "text",
+                                "label": "Date\n"
+                            },
+                            {
+                                "name": "question_8aYxb5",
+                                "type": "text",
+                                "label": "Reminder\n"
+                            },
+                            {
+                                "name": "question_0BYOqy",
+                                "type": "text",
+                                "label": "Keyword\n"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Fields by ID"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "module": "supabase:createARow",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 3360974
+            },
+            "mapper": {
+                "date": "{{1.fieldsById.question_XJ706g}} {{1.fields.Time}}:00",
+                "name": "{{1.fieldsById.question_y2bY8g}}",
+                "time": "{{1.fields.Time}}",
+                "phone": "{{1.fieldsById.question_JdYGBd}}",
+                "table": "Reminder",
+                "kewword": "{{1.fieldsById.question_0BYOqy}}",
+                "reminder": "{{1.fieldsById.question_8aYxb5}}",
+                "created_at": "{{now}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "table": {
+                            "mode": "chose",
+                            "label": "Reminder",
+                            "nested": [
+                                {
+                                    "help": "Defaults to now(). ",
+                                    "name": "created_at",
+                                    "type": "text",
+                                    "label": "created_at",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "phone",
+                                    "type": "text",
+                                    "label": "phone",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "name",
+                                    "type": "text",
+                                    "label": "name",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "reminder",
+                                    "type": "text",
+                                    "label": "reminder",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "date",
+                                    "type": "text",
+                                    "label": "date",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "kewword",
+                                    "type": "text",
+                                    "label": "kewword",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "status",
+                                    "type": "boolean",
+                                    "label": "status",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "Defaults to gen_random_uuid(). ",
+                                    "name": "id",
+                                    "type": "text",
+                                    "label": "id",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "time",
+                                    "type": "time",
+                                    "label": "time",
+                                    "options": null,
+                                    "required": false
+                                }
+                            ]
+                        },
+                        "status": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "supabase"
+                            },
+                            "label": "My Supabase connection"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:supabase",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "created_at",
+                        "type": "text"
+                    },
+                    {
+                        "name": "phone",
+                        "type": "text"
+                    },
+                    {
+                        "name": "name",
+                        "type": "text"
+                    },
+                    {
+                        "name": "reminder",
+                        "type": "text"
+                    },
+                    {
+                        "name": "date",
+                        "type": "text"
+                    },
+                    {
+                        "name": "kewword",
+                        "type": "text"
+                    },
+                    {
+                        "name": "status",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "id",
+                        "type": "text"
+                    },
+                    {
+                        "name": "time",
+                        "type": "time"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "created_at",
+                        "type": "text",
+                        "label": "created_at"
+                    },
+                    {
+                        "name": "phone",
+                        "type": "text",
+                        "label": "phone"
+                    },
+                    {
+                        "name": "name",
+                        "type": "text",
+                        "label": "name"
+                    },
+                    {
+                        "name": "reminder",
+                        "type": "text",
+                        "label": "reminder"
+                    },
+                    {
+                        "name": "date",
+                        "type": "text",
+                        "label": "date"
+                    },
+                    {
+                        "name": "kewword",
+                        "type": "text",
+                        "label": "kewword"
+                    },
+                    {
+                        "name": "status",
+                        "type": "boolean",
+                        "label": "status"
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "id"
+                    },
+                    {
+                        "name": "time",
+                        "type": "text",
+                        "label": "time"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us2.make.com",
+        "notes": []
+    }
+}

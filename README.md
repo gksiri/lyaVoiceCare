@@ -87,10 +87,3 @@ This project was built for the Vapi Challenge with one goal:
 
 This is a demonstration only. No real patient data is used. No actual emergency services are contacted.
 
----
-
-📫 Contact
-
-Built by Georg Ksiri  
-LinkedIn: https://www.linkedin.com/in/georgksiri/  
-Demo video and presentation: (add link)
